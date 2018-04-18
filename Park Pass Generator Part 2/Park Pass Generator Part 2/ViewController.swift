@@ -17,13 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var managerBtn: UIButton!
     @IBOutlet weak var vendorBtn: UIButton!
     
-    // Sub entrant buttons
-    @IBOutlet weak var entrantType1: UIButton!
-    @IBOutlet weak var entrantType2: UIButton!
-    @IBOutlet weak var entrantType3: UIButton!
-    @IBOutlet weak var entrantType4: UIButton!
-    @IBOutlet weak var entrantType5: UIButton!
-    @IBOutlet weak var entrantType6: UIButton!
+    // Entrantypes (6 buttons)
+    @IBOutlet var entrantTypes: [UIButton]!
     
     
     // Info text fields
@@ -42,7 +37,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //hide all entrant buttons
+        for btn in entrantTypes { btn.isHidden = true}
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,57 +57,94 @@ class ViewController: UIViewController {
     }
     
     /// Guest pass generator button
-    @IBAction func entrantSelect(_ sender: Any){
+    @IBAction func mainEntrantSelect(_ sender: Any){
         
         if let button = sender as? UIButton {
+
+            guestBtn.isSelected = false
+            employeeBtn.isSelected = false
+            managerBtn.isSelected = false
+            vendorBtn.isSelected = false
+            
+            for btn in entrantTypes { btn.isHidden = true; btn.alpha = 0}
+            delayOnMainThread(seconds: 0.25, action: {
+                for btn in self.entrantTypes {
+                    UIView.animate(withDuration: 0.2) {
+                        btn.alpha = 1
+                    }
+                }
+            })
+            
+            button.isSelected = true
+            
             switch button {
             case guestBtn:
-                entrantType1.isHidden = false
-                entrantType1.setTitle("Child", for: .normal)
-                entrantType2.isHidden = false
-                entrantType2.setTitle("Adult", for: .normal)
-                entrantType3.isHidden = false
-                entrantType3.setTitle("Senior", for: .normal)
-                entrantType4.isHidden = false
-                entrantType4.setTitle("VIP", for: .normal)
-                entrantType5.isHidden = false
-                entrantType5.setTitle("Season Pass", for: .normal)
-                entrantType6.isHidden = false
-                entrantType6.setTitle("Senior", for: .normal)
-                
+                entrantTypes[0].setTitle("Child", for: .normal)
+                entrantTypes[0].isHidden = false
+                entrantTypes[1].setTitle("Adult", for: .normal)
+                entrantTypes[1].isHidden = false
+                entrantTypes[2].setTitle("Senior", for: .normal)
+                entrantTypes[2].isHidden = false
+                entrantTypes[3].setTitle("VIP", for: .normal)
+                entrantTypes[3].isHidden = false
+                entrantTypes[4].setTitle("Season Pass", for: .normal)
+                entrantTypes[4].isHidden = false
+                entrantTypes[5].setTitle("Senior", for: .normal)
+                entrantTypes[5].isHidden = false
             case employeeBtn:
-                entrantType1.isHidden = false
-                entrantType1.setTitle("Ride Services", for: .normal)
-                entrantType2.isHidden = false
-                entrantType2.setTitle("Maintenance", for: .normal)
-                entrantType3.isHidden = false
-                entrantType3.setTitle("Food Services", for: .normal)
-                entrantType4.isHidden = false
-                entrantType4.setTitle("Contract Employee", for: .normal)
-                entrantType5.isHidden = true
-                entrantType6.isHidden = true
+                entrantTypes[0].isHidden = false
+                entrantTypes[0].setTitle("Ride Services", for: .normal)
+                entrantTypes[1].isHidden = false
+                entrantTypes[1].setTitle("Maintenance", for: .normal)
+                entrantTypes[2].isHidden = false
+                entrantTypes[2].setTitle("Food Services", for: .normal)
+                entrantTypes[3].isHidden = false
+                entrantTypes[3].setTitle("Contract Employee", for: .normal)
+                entrantTypes[4].isHidden = true
+                entrantTypes[5].isHidden = true
             case managerBtn:
-                entrantType1.isHidden = false
-                entrantType1.setTitle("Manager", for: .normal)
-                entrantType2.isHidden = true
-                entrantType3.isHidden = true
-                entrantType4.isHidden = true
-                entrantType5.isHidden = true
-                entrantType6.isHidden = true
+                entrantTypes[0].isHidden = false
+                entrantTypes[0].setTitle("Manager", for: .normal)
+                entrantTypes[1].isHidden = true
+                entrantTypes[2].isHidden = true
+                entrantTypes[3].isHidden = true
+                entrantTypes[4].isHidden = true
+                entrantTypes[5].isHidden = true
             case vendorBtn:
-                entrantType1.setTitle("Vendor", for: .normal)
-                entrantType2.isHidden = true
-                entrantType3.isHidden = true
-                entrantType4.isHidden = true
-                entrantType5.isHidden = true
-                entrantType6.isHidden = true
+                entrantTypes[0].isHidden = false
+                entrantTypes[0].setTitle("Vendor", for: .normal)
+                entrantTypes[1].isHidden = true
+                entrantTypes[2].isHidden = true
+                entrantTypes[3].isHidden = true
+                entrantTypes[4].isHidden = true
+                entrantTypes[5].isHidden = true
             default:
                 print("Something is wrong!")
             }
         }
     }
-
-
+    
+    @IBAction func entrantSelect(_ sender: Any) {
+        
+        if let button = sender as? UIButton {
+            //deselect all
+            for btn in entrantTypes { btn.isSelected = false }
+            button.isSelected = true
+        }
+    }
+    
+    
+    /// Adds delay
+    func delayOnMainThread(seconds: Double, action:(() -> ())!) {
+        
+        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64( seconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+            action()
+        })
+        
+        let queue = DispatchQueue(label: "com.test.myqueue")
+        queue.async {}
+    }
 }
 
 
