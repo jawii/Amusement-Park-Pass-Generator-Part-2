@@ -36,8 +36,9 @@ class Employee: Entrant {
                 throw EntrantCheckError.invalidStreetAddress
             }
         } catch let error as EntrantCheckError {
-            print("Error for creating pass for Employee:")
-            print(error.rawValue)
+            //print("Error for creating pass for Employee:")
+            //print(error.rawValue)
+            throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
         self.rideAccess = [.ride]
@@ -84,8 +85,9 @@ class EmployeeContract: Employee, EmployeeHourlyProfile {
                 throw EntrantCheckError.invalidProjectNumber
             }
         } catch let error as EntrantCheckError {
-            print("Error for creating pass for Employee:")
-            print(error.rawValue)
+            //print("Error for creating pass for Employee:")
+            //print(error.rawValue)
+            throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
         
@@ -153,8 +155,9 @@ class Vendor: Entrant {
                 throw EntrantCheckError.invalidCompanyName
             }
         } catch let error as EntrantCheckError {
-            print("Error for creating pass for Vendor:")
-            print(error.rawValue)
+            //print("Error for creating pass for Vendor:")
+            //print(error.rawValue)
+            throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
         

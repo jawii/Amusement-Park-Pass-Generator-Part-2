@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             dateFormatter.dateFormat = "MM-dd-yyyy"
             
             guard let birthdayDate = dateFormatter.date(from:birthDateString!) else{
-                Alert.showBasic(title: "Date format", message: "Please give date of birth in format MM-DD-YYYY", vc: self)
+                Alert.showBasic(title: "Date format error", message: "Please give date of birth in format MM-DD-YYYY", vc: self)
                 return
             }
             
@@ -98,17 +98,39 @@ class ViewController: UIViewController {
         } else if currentEntrant == .guestClassic  {
             entrantObject = try! Guest(entrantInformation: entrantInformation)
         } else if currentEntrant == .guestVIP {
-            entrantObject = try! Guest(entrantInformation: entrantInformation)
+            entrantObject = try! GuestVIP(entrantInformation: entrantInformation)
         } else if currentEntrant == .guestSeasonPass {
-            
+            entrantObject = try! GuestSeasonPass(entrantInformation: entrantInformation)
+        } else if currentEntrant == .seniorGuest {
+            entrantObject = try! GuestSenior(entrantInformation: entrantInformation)
+        } else if currentEntrant == .employeeContract {
+            entrantObject = try! EmployeeContract(entrantInformation: entrantInformation)
+        } else if currentEntrant == .employeeFoodService {
+            entrantObject = try! EmployeeHourlyFoodServices(entrantInformation: entrantInformation)
+        } else if currentEntrant == .employeeRideService {
+            entrantObject = try! EmployeeHourlyRideServices(entrantInformation: entrantInformation)
+        } else if currentEntrant == .employeeMaintenance {
+            entrantObject = try! EmployeeHourlyMaintenance(entrantInformation: entrantInformation)
+        } else if currentEntrant == .managerShift {
+            entrantObject = try! ManagerShift(entrantInformation: entrantInformation)
+        } else if currentEntrant == .managerGeneral {
+            entrantObject = try! ManagerGeneral(entrantInformation: entrantInformation)
+        } else if currentEntrant == .managerSenior {
+            entrantObject = try! ManagerSenior(entrantInformation: entrantInformation)
+        } else if currentEntrant == .vendor {
+            entrantObject = try! Vendor(entrantInformation: entrantInformation)
+        } else {
+            print("TYPO")
         }
+        
+        print(entrantObject!)
     }
     
     /// Populate data button
     @IBAction func populateData(_ sender: UIButton) {
     }
     
-    /// Guest pass generator button
+    /// Set ups the entrant buttons
     @IBAction func mainEntrantSelect(_ sender: UIButton){
         
         let button = sender
@@ -124,6 +146,7 @@ class ViewController: UIViewController {
             btn.isSelected = false
             
         }
+        // Add delay so that button reordering wont show
         delayOnMainThread(seconds: 0.25, action: {
             for btn in self.entrantTypes {
                 UIView.animate(withDuration: 0.2) {
@@ -183,6 +206,7 @@ class ViewController: UIViewController {
     
     @IBAction func entrantSelect(_ sender: UIButton) {
         
+        clearInfoLabels()
         let button = sender
     
         //enable all textfields
@@ -223,6 +247,13 @@ class ViewController: UIViewController {
         
         let queue = DispatchQueue(label: "com.test.myqueue")
         queue.async {}
+    }
+    
+    /// Clear textFields
+    func clearInfoLabels() {
+        for label in entranInfoLabelTexts {
+            label.text = ""
+        }
     }
 }
 

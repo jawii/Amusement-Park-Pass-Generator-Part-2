@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 ///Parent Class for all Entrants
@@ -109,4 +110,12 @@ class Entrant: EntrantProfile {
             print("No discounts")
         }
     }
+    
+    func throwAlert(with message: String, title: String) {
+        // Add alert if there is controller
+        if let topController = UIApplication.topViewController() {
+            Alert.showBasic(title: title, message: message, vc: topController )
+        }
+    }
 }
+

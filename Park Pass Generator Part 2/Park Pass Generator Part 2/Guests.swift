@@ -7,8 +7,7 @@
 //
 
 import Foundation
-
-import Foundation
+import UIKit
 
 class Guest:Entrant, GuestProfile{
     var entrantType = EntrantType.guestClassic
@@ -38,7 +37,8 @@ class GuestFreeChild: Guest, FreeChildGuestProfile{
         entrantType = EntrantType.guestFreeChild
         
         guard entrantInformation.dateOfBirth != nil else {
-            print(EntrantCheckError.invalidAge.rawValue)
+            //print(EntrantCheckError.invalidAge.rawValue)
+            throwAlert(with: EntrantCheckError.invalidAge.rawValue, title: "Invalid data")
             return nil
         }
         
@@ -47,6 +47,7 @@ class GuestFreeChild: Guest, FreeChildGuestProfile{
             try checkcAgeIsOverFice(with: entrantInformation.dateOfBirth!)
         } catch let error as EntrantCheckError{
             print(error.rawValue)
+            throwAlert(with: error.rawValue, title: "Invalid age")
             return nil
         }
         
@@ -87,8 +88,9 @@ class GuestSeasonPass: Guest {
                 throw EntrantCheckError.invalidAge
             }
         } catch let error as EntrantCheckError {
-            print("Error for creating pass for Season Guest:")
-            print(error.rawValue)
+//          print("Error for creating pass for Season Guest:")
+//          print(error.rawValue)
+            throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
         
@@ -113,8 +115,9 @@ class GuestSenior: Guest {
                 throw EntrantCheckError.invalidAge
             }
         } catch let error as EntrantCheckError {
-            print("Error for creating pass for Season Guest:")
-            print(error.rawValue)
+            //print("Error for creating pass for Season Guest:")
+            //print(error.rawValue)
+            throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
         
@@ -124,6 +127,8 @@ class GuestSenior: Guest {
         self.entrantType = EntrantType.seniorGuest
     }
 }
+
+
 
 
 
