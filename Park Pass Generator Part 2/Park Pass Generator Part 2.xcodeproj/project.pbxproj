@@ -12,6 +12,11 @@
 		3155C6D42086FADB00819248 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3155C6D22086FADB00819248 /* Main.storyboard */; };
 		3155C6D62086FADB00819248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3155C6D52086FADB00819248 /* Assets.xcassets */; };
 		3155C6D92086FADB00819248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3155C6D72086FADB00819248 /* LaunchScreen.storyboard */; };
+		31C18DD020874E9000B3B54A /* EntrantParentClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DCF20874E9000B3B54A /* EntrantParentClass.swift */; };
+		31C18DD220874EB600B3B54A /* EntrantProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DD120874EB600B3B54A /* EntrantProfiles.swift */; };
+		31C18DD420874EDC00B3B54A /* Guests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DD320874EDC00B3B54A /* Guests.swift */; };
+		31C18DD620874EF700B3B54A /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DD520874EF700B3B54A /* Employees.swift */; };
+		31C18DD820874F2400B3B54A /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DD720874F2400B3B54A /* ErrorHandling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		3155C6D52086FADB00819248 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3155C6D82086FADB00819248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3155C6DA2086FADB00819248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31C18DCF20874E9000B3B54A /* EntrantParentClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantParentClass.swift; sourceTree = "<group>"; };
+		31C18DD120874EB600B3B54A /* EntrantProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantProfiles.swift; sourceTree = "<group>"; };
+		31C18DD320874EDC00B3B54A /* Guests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guests.swift; sourceTree = "<group>"; };
+		31C18DD520874EF700B3B54A /* Employees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
+		31C18DD720874F2400B3B54A /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +70,21 @@
 				3155C6D52086FADB00819248 /* Assets.xcassets */,
 				3155C6D72086FADB00819248 /* LaunchScreen.storyboard */,
 				3155C6DA2086FADB00819248 /* Info.plist */,
+				31C18DD720874F2400B3B54A /* ErrorHandling.swift */,
+				31C18DD920874F3000B3B54A /* EntrantClasses */,
 			);
 			path = "Park Pass Generator Part 2";
+			sourceTree = "<group>";
+		};
+		31C18DD920874F3000B3B54A /* EntrantClasses */ = {
+			isa = PBXGroup;
+			children = (
+				31C18DD120874EB600B3B54A /* EntrantProfiles.swift */,
+				31C18DCF20874E9000B3B54A /* EntrantParentClass.swift */,
+				31C18DD320874EDC00B3B54A /* Guests.swift */,
+				31C18DD520874EF700B3B54A /* Employees.swift */,
+			);
+			name = EntrantClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31C18DD220874EB600B3B54A /* EntrantProfiles.swift in Sources */,
+				31C18DD620874EF700B3B54A /* Employees.swift in Sources */,
+				31C18DD820874F2400B3B54A /* ErrorHandling.swift in Sources */,
+				31C18DD020874E9000B3B54A /* EntrantParentClass.swift in Sources */,
 				3155C6D12086FADB00819248 /* ViewController.swift in Sources */,
 				3155C6CF2086FADB00819248 /* AppDelegate.swift in Sources */,
+				31C18DD420874EDC00B3B54A /* Guests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
