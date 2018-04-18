@@ -68,10 +68,11 @@ class ViewController: UIViewController {
             return
         }
         
-        //Try to form date from dateOfBirthTextField.
-        let birthDateString = dateOfBirthTextField.text
-        //Skip if empty string
+        
+        // Try to form date from dateOfBirthTextField.
         var finalBirthDate: Date? = nil
+        let birthDateString = dateOfBirthTextField.text
+        // Skip if empty string
         if birthDateString != "" {
             
             let dateFormatter = DateFormatter()
@@ -84,6 +85,11 @@ class ViewController: UIViewController {
             }
             
             finalBirthDate = birthdayDate
+        }
+        
+        // Check that rest is ok
+        if !isUserInputValid() {
+            return
         }
         
         let entrantInformation = EntrantInformation(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetAddressTextField.text, city: cityNameTextField.text, state: stateNameTextField.text, zipCode: zipCodeTextField.text, dateOfBirth: finalBirthDate, socialSecurityNumber: ssnTextField.text, projectNumber: projectTextField.text, companyName: companyNameTextField.text)
@@ -123,15 +129,29 @@ class ViewController: UIViewController {
             print("TYPO")
         }
         
-        print(entrantObject!)
+        print(entrantObject)
     }
     
     /// Populate data button
     @IBAction func populateData(_ sender: UIButton) {
+        if currentEntrant == nil {
+            return
+        }
+        POPULATEDATAS(with: currentEntrant!, labels: entranInfoLabelTexts)
     }
     
     /// Set ups the entrant buttons
     @IBAction func mainEntrantSelect(_ sender: UIButton){
+        
+        currentEntrant = nil
+        
+        //clear info labels
+        clearInfoLabels()
+        //disable all textfields
+        for label in entranInfoLabelTexts {
+            label.isEnabled = false
+            label.backgroundColor = UIColor.lightGray
+        }
         
         let button = sender
     
@@ -254,6 +274,48 @@ class ViewController: UIViewController {
         for label in entranInfoLabelTexts {
             label.text = ""
         }
+    }
+    
+    /// Checks the user inputs. Returns true if all ok
+    func isUserInputValid() -> Bool{
+        
+        //check SSN contains 9 digits. (wikipedia)
+        let ssnString = ssnTextField.text?.replacingOccurrences(of: "-", with: "")
+        
+        if (ssnString?.count)! > 1 {
+            if let ssnString = ssnString {
+                if ssnString.count != 9 {
+                    Alert.showBasic(title: "Invalid SSN", message: "Please give Social Security Number in format ###-##-####", vc: self)
+                    return false
+                }
+            }
+        }
+        // Check Projectnumber
+        if (projectTextField.text?.count)! > 1 {
+            guard Int(projectTextField.text!) != nil else {
+                Alert.showBasic(title: "Invalid Project Number", message: "Project number is not an number", vc: self)
+                return false
+            }
+        }
+        
+        // Check zipcode
+        if (zipCodeTextField.text?.count)! > 1 {
+            guard Int(zipCodeTextField.text!) != nil else {
+                Alert.showBasic(title: "Invalid Zip Code", message: "Zip Code number is not an number", vc: self)
+                return false
+            }
+        }
+        
+        //check that input lengths are not over 20 characters
+        for label in entranInfoLabelTexts {
+            if (label.text?.count)! > 20 {
+                Alert.showBasic(title: "Too long inputs", message: "Please shorten each input for pass. (Less than 20 characters).", vc: self)
+                return false
+            }
+        }
+        return true
+        
+        
     }
 }
 

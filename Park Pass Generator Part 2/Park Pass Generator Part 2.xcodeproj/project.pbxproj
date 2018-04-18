@@ -18,6 +18,7 @@
 		31C18DD620874EF700B3B54A /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DD520874EF700B3B54A /* Employees.swift */; };
 		31C18DD820874F2400B3B54A /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DD720874F2400B3B54A /* ErrorHandling.swift */; };
 		31C62B7F20879E3C00C9D47E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C62B7E20879E3C00C9D47E /* Helpers.swift */; };
+		31C62B812087D66D00C9D47E /* PopulatedDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C62B802087D66D00C9D47E /* PopulatedDatas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		31C18DD520874EF700B3B54A /* Employees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
 		31C18DD720874F2400B3B54A /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		31C62B7E20879E3C00C9D47E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		31C62B802087D66D00C9D47E /* PopulatedDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulatedDatas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				31C18DCF20874E9000B3B54A /* EntrantParentClass.swift */,
 				31C18DD320874EDC00B3B54A /* Guests.swift */,
 				31C18DD520874EF700B3B54A /* Employees.swift */,
+				31C62B802087D66D00C9D47E /* PopulatedDatas.swift */,
 			);
 			name = EntrantClasses;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				31C18DD220874EB600B3B54A /* EntrantProfiles.swift in Sources */,
 				31C62B7F20879E3C00C9D47E /* Helpers.swift in Sources */,
 				31C18DD620874EF700B3B54A /* Employees.swift in Sources */,
+				31C62B812087D66D00C9D47E /* PopulatedDatas.swift in Sources */,
 				31C18DD820874F2400B3B54A /* ErrorHandling.swift in Sources */,
 				31C18DD020874E9000B3B54A /* EntrantParentClass.swift in Sources */,
 				3155C6D12086FADB00819248 /* ViewController.swift in Sources */,
