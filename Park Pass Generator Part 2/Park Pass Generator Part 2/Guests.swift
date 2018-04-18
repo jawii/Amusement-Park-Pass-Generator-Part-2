@@ -37,13 +37,10 @@ class GuestFreeChild: Guest, FreeChildGuestProfile{
         try super.init(entrantInformation: entrantInformation)
         entrantType = EntrantType.guestFreeChild
         
-        //Field on part 2 will always produce a date object
-        /*
-         guard let age = entrantInformation.dateOfBirth else {
-         print(EntrantCheckError.invalidAge.rawValue)
-         return nil
-         }
-         */
+        guard entrantInformation.dateOfBirth != nil else {
+            print(EntrantCheckError.invalidAge.rawValue)
+            return nil
+        }
         
         //check if age under 5
         do {
@@ -69,3 +66,74 @@ class GuestFreeChild: Guest, FreeChildGuestProfile{
         }
     }
 }
+
+class GuestSeasonPass: Guest {
+    
+    override init?(entrantInformation: EntrantInformation) throws {
+        try super.init(entrantInformation: entrantInformation)
+        
+        do {
+            if entrantInformation.firstName == "" {
+                throw EntrantCheckError.invalidFirstName
+            } else if entrantInformation.lastName == "" {
+                throw EntrantCheckError.invalidLastName
+            } else if entrantInformation.state == "" {
+                throw EntrantCheckError.invalidState
+            } else if entrantInformation.zipCode == "" {
+                throw EntrantCheckError.invalidZipCode
+            } else if entrantInformation.city == "" {
+                throw EntrantCheckError.invalidCity
+            } else if entrantInformation.dateOfBirth == nil {
+                throw EntrantCheckError.invalidAge
+            }
+        } catch let error as EntrantCheckError {
+            print("Error for creating pass for Season Guest:")
+            print(error.rawValue)
+            return nil
+        }
+        
+        
+        self.rideAccess = [.canPassLines, .ride]
+        self.discounts = [.food(10), .merchandice(20)]
+        self.entrantType = EntrantType.guestSeasonPass
+    }
+}
+
+class GuestSenior: Guest {
+    
+    override init?(entrantInformation: EntrantInformation) throws {
+        try super.init(entrantInformation: entrantInformation)
+        
+        do {
+            if entrantInformation.firstName == "" {
+                throw EntrantCheckError.invalidFirstName
+            } else if entrantInformation.lastName == "" {
+                throw EntrantCheckError.invalidLastName
+            } else if entrantInformation.dateOfBirth == nil {
+                throw EntrantCheckError.invalidAge
+            }
+        } catch let error as EntrantCheckError {
+            print("Error for creating pass for Season Guest:")
+            print(error.rawValue)
+            return nil
+        }
+        
+        
+        self.rideAccess = [.canPassLines, .ride]
+        self.discounts = [.food(10), .merchandice(10)]
+        self.entrantType = EntrantType.seniorGuest
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -91,15 +91,17 @@ class ViewController: UIViewController {
         
         //create entrant
         var entrantObject: Entrant?
+        //let currentEntrantType = currentEntrant as EntrantType!
         
-        currentEntrant = (currentEntrant as! EntrantType)
-        
-        if currentEntrant = EntrantType.guestFreeChild {
-            entrantObject = try? GuestFreeChild(entrantInformation: entrantInformation)
+        if currentEntrant == .guestFreeChild {
+            entrantObject = try! GuestFreeChild(entrantInformation: entrantInformation)
+        } else if currentEntrant == .guestClassic  {
+            entrantObject = try! Guest(entrantInformation: entrantInformation)
+        } else if currentEntrant == .guestVIP {
+            entrantObject = try! Guest(entrantInformation: entrantInformation)
+        } else if currentEntrant == .guestSeasonPass {
+            
         }
-        
-
-
     }
     
     /// Populate data button
