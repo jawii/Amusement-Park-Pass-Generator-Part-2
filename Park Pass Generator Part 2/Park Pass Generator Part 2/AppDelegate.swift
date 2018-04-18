@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Amusement Park Pass Generator: Part 2
+//  Park Pass Generator Part 2
 //
-//  Created by Jaakko Kenttä on 17/04/2018.
+//  Created by Jaakko Kenttä on 18/04/2018.
 //  Copyright © 2018 Jaakko Kenttä. All rights reserved.
 //
 
