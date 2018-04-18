@@ -35,8 +35,9 @@ class ViewController: UIViewController {
     
     @IBOutlet var entranInfoLabelTexts: [UITextField]!
     
-
-
+    // Keep track of current entrant
+    var currentEntrant: EntrantType? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,10 +48,11 @@ class ViewController: UIViewController {
             
         }
         
-        
-        
         //disable all textfields
-        for label in entranInfoLabelTexts { label.isEnabled = false }
+        for label in entranInfoLabelTexts {
+            label.isEnabled = false
+            label.backgroundColor = UIColor.lightGray
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +63,43 @@ class ViewController: UIViewController {
     
     /// Generate Pass Button
     @IBAction func generatePass(_ sender: UIButton) {
+        // If no entrant selected, return
+        if currentEntrant == nil {
+            return
+        }
+        
+        //Try to form date from dateOfBirthTextField.
+        let birthDateString = dateOfBirthTextField.text
+        //Skip if empty string
+        var finalBirthDate: Date? = nil
+        if birthDateString != "" {
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "fi")
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            
+            guard let birthdayDate = dateFormatter.date(from:birthDateString!) else{
+                Alert.showBasic(title: "Date format", message: "Please give date of birth in format MM-DD-YYYY", vc: self)
+                return
+            }
+            
+            finalBirthDate = birthdayDate
+        }
+        
+        let entrantInformation = EntrantInformation(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetAddressTextField.text, city: cityNameTextField.text, state: stateNameTextField.text, zipCode: zipCodeTextField.text, dateOfBirth: finalBirthDate, socialSecurityNumber: ssnTextField.text, projectNumber: projectTextField.text, companyName: companyNameTextField.text)
+        
+        
+        //create entrant
+        var entrantObject: Entrant?
+        
+        currentEntrant = (currentEntrant as! EntrantType)
+        
+        if currentEntrant = EntrantType.guestFreeChild {
+            entrantObject = try? GuestFreeChild(entrantInformation: entrantInformation)
+        }
+        
+
+
     }
     
     /// Populate data button
@@ -119,15 +158,17 @@ class ViewController: UIViewController {
             entrantTypes[5].isHidden = true
         case managerBtn:
             entrantTypes[0].isHidden = false
-            entrantTypes[0].setTitle(EntrantType.manager.rawValue, for: .normal)
-            entrantTypes[1].isHidden = true
-            entrantTypes[2].isHidden = true
+            entrantTypes[0].setTitle(EntrantType.managerGeneral.rawValue, for: .normal)
+            entrantTypes[1].isHidden = false
+            entrantTypes[1].setTitle(EntrantType.managerShift.rawValue, for: .normal)
+            entrantTypes[2].isHidden = false
+            entrantTypes[2].setTitle(EntrantType.managerSenior.rawValue, for: .normal)
             entrantTypes[3].isHidden = true
             entrantTypes[4].isHidden = true
             entrantTypes[5].isHidden = true
         case vendorBtn:
             entrantTypes[0].isHidden = false
-            entrantTypes[0].setTitle(EntrantType.Vendor.rawValue, for: .normal)
+            entrantTypes[0].setTitle(EntrantType.vendor.rawValue, for: .normal)
             entrantTypes[1].isHidden = true
             entrantTypes[2].isHidden = true
             entrantTypes[3].isHidden = true
@@ -141,16 +182,32 @@ class ViewController: UIViewController {
     @IBAction func entrantSelect(_ sender: UIButton) {
         
         let button = sender
-        //get the current entranttype
-        let entrantType : EntrantType = EntrantType(rawValue: (button.titleLabel?.text)!)!
+    
+        //enable all textfields
+        for label in entranInfoLabelTexts {
+            label.isEnabled = true
+            label.backgroundColor = UIColor.white
+        }
         
-        print(entrantType)
-        
-        //deselect all
+        //deselect all and set current button active
         for btn in entrantTypes { btn.isSelected = false }
         button.isSelected = true
         
-        //firstNameTextField.isEnabled = false
+        
+        // Get the current entranttype. Wrap by force because its 101% sure that the titlelabel text has entranttypes raw values
+        let entrantType : EntrantType = EntrantType(rawValue: (button.titleLabel?.text)!)!
+        currentEntrant = entrantType
+        
+        // If entrant is not an contract Employee, hide the project number label
+        if entrantType != .employeeContract {
+            projectTextField.backgroundColor = UIColor.lightGray
+            projectTextField.isEnabled = false
+        }
+        // If entrant is not an Vendor, hide the Company name
+        if entrantType != .vendor {
+            companyNameTextField.backgroundColor = UIColor.lightGray
+            companyNameTextField.isEnabled = false
+        }
     }
     
     

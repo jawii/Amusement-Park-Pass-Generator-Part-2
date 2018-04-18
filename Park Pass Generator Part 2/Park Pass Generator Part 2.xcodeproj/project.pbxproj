@@ -17,6 +17,7 @@
 		31C18DD420874EDC00B3B54A /* Guests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DD320874EDC00B3B54A /* Guests.swift */; };
 		31C18DD620874EF700B3B54A /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DD520874EF700B3B54A /* Employees.swift */; };
 		31C18DD820874F2400B3B54A /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C18DD720874F2400B3B54A /* ErrorHandling.swift */; };
+		31C62B7F20879E3C00C9D47E /* AlertClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C62B7E20879E3C00C9D47E /* AlertClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		31C18DD320874EDC00B3B54A /* Guests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guests.swift; sourceTree = "<group>"; };
 		31C18DD520874EF700B3B54A /* Employees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
 		31C18DD720874F2400B3B54A /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		31C62B7E20879E3C00C9D47E /* AlertClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				3155C6DA2086FADB00819248 /* Info.plist */,
 				31C18DD720874F2400B3B54A /* ErrorHandling.swift */,
 				31C18DD920874F3000B3B54A /* EntrantClasses */,
+				31C62B7E20879E3C00C9D47E /* AlertClass.swift */,
 			);
 			path = "Park Pass Generator Part 2";
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31C18DD220874EB600B3B54A /* EntrantProfiles.swift in Sources */,
+				31C62B7F20879E3C00C9D47E /* AlertClass.swift in Sources */,
 				31C18DD620874EF700B3B54A /* Employees.swift in Sources */,
 				31C18DD820874F2400B3B54A /* ErrorHandling.swift in Sources */,
 				31C18DD020874E9000B3B54A /* EntrantParentClass.swift in Sources */,

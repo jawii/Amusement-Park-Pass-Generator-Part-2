@@ -36,6 +36,9 @@ struct EntrantInformation {
     let state: String?
     let zipCode: String?
     let dateOfBirth: Date?
+    let socialSecurityNumber: String?
+    let projectNumber: String?
+    let companyName: String?
 }
 
 //Used for labeling the texts and getting the right entrantype
@@ -54,11 +57,11 @@ enum EntrantType: String {
     case employeeRideService = "Ride Services"
     case employeeMaintenance = "Maintenance"
     //other
-    case manager = "Manager"
+    case managerShift = "Shift Manager"
+    case managerGeneral = "General Manager"
+    case managerSenior = "Senior Manager"
     case vendor = "Vendor"
 }
-
-//Information fields to different fields
 
 
 //Protocols for all Entrants

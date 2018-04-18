@@ -69,8 +69,8 @@ class EmployeeHourlyMaintenance: Employee, EmployeeHourlyProfile {
 
 
 ///Manager is like an Employee
-class Manager: Employee, ManagerProfile {
-    var entrantType = EntrantType.manager
+class ManagerGeneral: Employee, ManagerProfile {
+    var entrantType = EntrantType.managerGeneral
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
@@ -78,3 +78,23 @@ class Manager: Employee, ManagerProfile {
         self.discounts = [.food(25), .merchandice(25)]
     }
 }
+
+class ManagerShift: Employee, ManagerProfile {
+    var entrantType = EntrantType.managerShift
+    
+    override init?(entrantInformation: EntrantInformation) throws{
+        try super.init(entrantInformation: entrantInformation)
+        self.accessAreas = [.amusement, .kitchen, .office, .rideControl, .maintenance]
+        self.discounts = [.food(25), .merchandice(25)]
+    }
+}
+class ManagerSenior: Employee, ManagerProfile {
+    var entrantType = EntrantType.managerSenior
+    
+    override init?(entrantInformation: EntrantInformation) throws{
+        try super.init(entrantInformation: entrantInformation)
+        self.accessAreas = [.amusement, .kitchen, .office, .rideControl, .maintenance]
+        self.discounts = [.food(25), .merchandice(25)]
+    }
+}
+
