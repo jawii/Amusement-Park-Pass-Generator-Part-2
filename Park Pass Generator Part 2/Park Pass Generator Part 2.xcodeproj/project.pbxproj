@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		314BC9FA20886F02000ACB50 /* PassGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BC9F920886F02000ACB50 /* PassGeneratorViewController.swift */; };
+		314BCA002088D75E000ACB50 /* SoundProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BC9FF2088D75E000ACB50 /* SoundProvider.swift */; };
+		314BCA032088D7D6000ACB50 /* AccessDenied.wav in Resources */ = {isa = PBXBuildFile; fileRef = 314BCA012088D7D6000ACB50 /* AccessDenied.wav */; };
+		314BCA042088D7D6000ACB50 /* AccessGranted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 314BCA022088D7D6000ACB50 /* AccessGranted.wav */; };
 		3155C6CF2086FADB00819248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3155C6CE2086FADB00819248 /* AppDelegate.swift */; };
 		3155C6D12086FADB00819248 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3155C6D02086FADB00819248 /* ViewController.swift */; };
 		3155C6D42086FADB00819248 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3155C6D22086FADB00819248 /* Main.storyboard */; };
@@ -24,6 +27,9 @@
 
 /* Begin PBXFileReference section */
 		314BC9F920886F02000ACB50 /* PassGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassGeneratorViewController.swift; sourceTree = "<group>"; };
+		314BC9FF2088D75E000ACB50 /* SoundProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProvider.swift; sourceTree = "<group>"; };
+		314BCA012088D7D6000ACB50 /* AccessDenied.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AccessDenied.wav; sourceTree = "<group>"; };
+		314BCA022088D7D6000ACB50 /* AccessGranted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AccessGranted.wav; sourceTree = "<group>"; };
 		3155C6CB2086FADB00819248 /* Park Pass Generator Part 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park Pass Generator Part 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3155C6CE2086FADB00819248 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3155C6D02086FADB00819248 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,9 +83,12 @@
 				3155C6D72086FADB00819248 /* LaunchScreen.storyboard */,
 				3155C6DA2086FADB00819248 /* Info.plist */,
 				31C18DD720874F2400B3B54A /* ErrorHandling.swift */,
+				314BCA012088D7D6000ACB50 /* AccessDenied.wav */,
+				314BCA022088D7D6000ACB50 /* AccessGranted.wav */,
 				31C18DD920874F3000B3B54A /* EntrantClasses */,
 				31C62B7E20879E3C00C9D47E /* Helpers.swift */,
 				314BC9F920886F02000ACB50 /* PassGeneratorViewController.swift */,
+				314BC9FF2088D75E000ACB50 /* SoundProvider.swift */,
 			);
 			path = "Park Pass Generator Part 2";
 			sourceTree = "<group>";
@@ -155,8 +164,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3155C6D92086FADB00819248 /* LaunchScreen.storyboard in Resources */,
+				314BCA042088D7D6000ACB50 /* AccessGranted.wav in Resources */,
 				3155C6D62086FADB00819248 /* Assets.xcassets in Resources */,
 				3155C6D42086FADB00819248 /* Main.storyboard in Resources */,
+				314BCA032088D7D6000ACB50 /* AccessDenied.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +188,7 @@
 				3155C6D12086FADB00819248 /* ViewController.swift in Sources */,
 				3155C6CF2086FADB00819248 /* AppDelegate.swift in Sources */,
 				31C18DD420874EDC00B3B54A /* Guests.swift in Sources */,
+				314BCA002088D75E000ACB50 /* SoundProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

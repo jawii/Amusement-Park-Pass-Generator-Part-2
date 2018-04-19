@@ -95,7 +95,7 @@ class EmployeeContract: Employee, EmployeeHourlyProfile {
         case "1002": self.accessAreas = [.amusement, .rideControl, .maintenance, .office]
         case "1003": self.accessAreas = [.amusement, .rideControl, .kitchen, .maintenance, .office]
         case "2001": self.accessAreas = [.office]
-        case "2002": self.accessAreas = [.kitchen, .maintenance, .office]
+        case "2002": self.accessAreas = [.kitchen, .maintenance]
         default: self.accessAreas = []
         }
         self.discounts = [.food(0), .merchandice(0)]
@@ -144,6 +144,7 @@ class ManagerSenior: Employee, ManagerProfile {
 class Vendor: Entrant {
     
     override init?(entrantInformation: EntrantInformation) throws {
+
         
         try super.init(entrantInformation: entrantInformation)
         

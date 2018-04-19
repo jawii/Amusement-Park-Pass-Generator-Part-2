@@ -25,6 +25,7 @@ class Entrant: EntrantProfile {
 //            print(Date())
         }
     }
+    let dateOfVisit = Date()
     var entrantType: EntrantType?
     
     init?(entrantInformation: EntrantInformation) throws{
@@ -34,7 +35,7 @@ class Entrant: EntrantProfile {
     
     ///Check if the entrant has birthday. If yes, print text
     ///Used on Swipe - methods
-    func checkIfBirthday() -> Void{
+    func checkIfBirthday() -> Bool{
         
         if let age = entrantInformation.dateOfBirth {
             let timeNow = Date()
@@ -42,9 +43,11 @@ class Entrant: EntrantProfile {
             let birthday = returnDayAndMonth(from: age)
             
             if dayAndMonthNow == birthday {
-                print("Happy BirthDay!!")
+                //print("Happy BirthDay!!")
+                return true
             }
         }
+        return false
     }
     
     /// Helper method: Used for birthdaychecking.
@@ -55,8 +58,6 @@ class Entrant: EntrantProfile {
     
     ///Check if entrant has access to given area. Returns console prints but in Part II, return boolen value
     func swipeAreaAccess(area: AccessAreas)-> SwipeResult{
-        
-        checkIfBirthday()
         //Check if swiped area is in accessAreas
         for ownArea in accessAreas {
             if ownArea == area {
@@ -84,8 +85,6 @@ class Entrant: EntrantProfile {
 
         lastTimeswiped = timeNow
 
-        checkIfBirthday()
-        
         for access in rideAccess {
             if access == accessFor {
                 //print("Access granted")
@@ -98,8 +97,7 @@ class Entrant: EntrantProfile {
     
     ///Swipe for Discount values. Prints them on console.
     func swipeDiscounts() -> (food: Int, merchandice: Int){
-        
-        checkIfBirthday()
+
         //lastTimeswiped = Date()
         
         var foodValue: Int = 0

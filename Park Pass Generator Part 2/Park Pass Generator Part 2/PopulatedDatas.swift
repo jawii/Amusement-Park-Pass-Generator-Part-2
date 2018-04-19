@@ -27,7 +27,7 @@ func POPULATEDATAS(with entrantType: EntrantType, labels: [UITextField]){
     var entrantInfo: [Int: String] = [:]
     
     switch entrantType {
-    case .guestFreeChild: entrantInfo = [0: "01-01-2017"]
+    case .guestFreeChild: entrantInfo = [0: "04-19-2017"]
     case .guestClassic: entrantInfo = [:]
     case .guestVIP: entrantInfo = [:]
     case .seniorGuest: entrantInfo = [3: "Oldie", 4: "Goldie", 0: "07-22-1920"]

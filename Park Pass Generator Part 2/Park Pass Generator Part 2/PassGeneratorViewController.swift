@@ -7,6 +7,8 @@
 //
 
 import UIKit
+//import Twinkle
+
 
 class PassGeneratorViewController: UIViewController {
     
@@ -26,13 +28,17 @@ class PassGeneratorViewController: UIViewController {
     @IBOutlet weak var accessTest: UIView!
     @IBOutlet weak var accessTestString: UILabel!
     
+    @IBOutlet weak var birthDayLabel: UILabel!
+    @IBOutlet weak var dateOfVisitLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let entrant = entrant else {
             fatalError()
         }
-        
+        birthDayLabel.isHidden = true
         //generate pass names
         setupPass(for: entrant)
     }
@@ -89,9 +95,25 @@ class PassGeneratorViewController: UIViewController {
         let discountValues = entrant.swipeDiscounts()
         foodDiscountLabel.text = "\(discountValues.food) % food discount"
         merchDisountLabel.text = "\(discountValues.merchandice) % merchandice discount"
+        
+        //check if birthday
+        let isBirthday = entrant.checkIfBirthday()
+        if isBirthday {
+            birthDayLabel.isHidden = false
+        }
+        
+        //display date of visit label to vendor
+        if entrant.entrantType == .vendor {
+            dateOfVisitLabel.text = entrant.dateOfVisit.toString(dateFormat: "MM-dd-yyyy")
+        } else {
+            dateOfVisitLabel.isHidden = true
+        }
     }
     
     @IBAction func testAccess(_ sender: UIButton) {
+        
+        
+        view.layer.removeAllAnimations()
         
         var accessArea: AccessAreas?
         var access: RideAccess?
@@ -123,9 +145,11 @@ class PassGeneratorViewController: UIViewController {
         case .accessGranted:
             color = #colorLiteral(red: 0, green: 0.895901978, blue: 0, alpha: 1)
             accessText = "Access Granted"
+            AudioProvider.playSound(named: .accessGranted)
         case .accessDenied:
             color = #colorLiteral(red: 0.9639720321, green: 0, blue: 0, alpha: 1)
             accessText = "Access Denied"
+            AudioProvider.playSound(named: .accessDenied)
         case .wait5seconds:
             color = #colorLiteral(red: 0.9010917544, green: 0.7810741067, blue: 0, alpha: 1)
             accessText = "Please wait 5 seconds to swipe again"
@@ -136,7 +160,7 @@ class PassGeneratorViewController: UIViewController {
             self.accessTest.backgroundColor = color
         }, completion: nil)
         
-        delayOnMainThread(seconds: 3, action: {
+        delayOnMainThread(seconds: 0.5, action: {
             UIView.animate(withDuration: 0.5, animations: {
                 self.accessTest.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             }, completion: nil)

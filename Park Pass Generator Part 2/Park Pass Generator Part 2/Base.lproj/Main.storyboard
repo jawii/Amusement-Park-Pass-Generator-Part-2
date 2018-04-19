@@ -515,7 +515,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="passtype" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idV-wQ-Y48">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="passtype" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="idV-wQ-Y48">
                                                         <rect key="frame" x="0.0" y="34.5" width="304" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                         <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -555,10 +555,25 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BirthDay!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDz-bW-2cI">
+                                        <rect key="frame" x="8" y="8" width="233" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.88139700889587402" green="0.0" blue="0.032989846338833881" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date of visit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k00-l3-Mwt">
+                                        <rect key="frame" x="493" y="301" width="195" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="hDz-bW-2cI" firstAttribute="top" secondItem="iVf-i0-ACq" secondAttribute="top" constant="8" id="20C-ok-8g0"/>
                                     <constraint firstAttribute="bottom" secondItem="kwI-lQ-CWt" secondAttribute="bottom" constant="40" id="32c-HP-Iiu"/>
+                                    <constraint firstItem="hDz-bW-2cI" firstAttribute="leading" secondItem="iVf-i0-ACq" secondAttribute="leading" constant="8" id="4f2-3R-pRF"/>
                                     <constraint firstItem="kwI-lQ-CWt" firstAttribute="top" secondItem="iVf-i0-ACq" secondAttribute="top" constant="42" id="UvA-Iq-Fi2"/>
                                     <constraint firstItem="kwI-lQ-CWt" firstAttribute="leading" secondItem="iVf-i0-ACq" secondAttribute="leading" constant="40" id="Y5f-ZG-7pc"/>
                                     <constraint firstAttribute="trailing" secondItem="kwI-lQ-CWt" secondAttribute="trailing" constant="40" id="wqT-VT-d5V"/>
@@ -652,7 +667,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-xH-kqh">
                                 <rect key="frame" x="250" y="735" width="268" height="147"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fxq-e9-BQ5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Result" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fxq-e9-BQ5">
                                         <rect key="frame" x="0.0" y="65" width="268" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -667,10 +682,10 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="BaR-UW-f4c">
-                                <rect key="frame" x="137.5" y="632" width="493" height="50"/>
+                                <rect key="frame" x="137" y="632" width="494" height="50"/>
                                 <subviews>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npl-LK-NvC">
-                                        <rect key="frame" x="0.0" y="0.0" width="147.5" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="50"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                         <state key="normal" title="Office ">
@@ -681,7 +696,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ouu-tb-fxe">
-                                        <rect key="frame" x="172.5" y="0.0" width="148" height="50"/>
+                                        <rect key="frame" x="173" y="0.0" width="148" height="50"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                         <state key="normal" title="Skip lines">
@@ -692,7 +707,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dS-wQ-zBa">
-                                        <rect key="frame" x="345.5" y="0.0" width="147.5" height="50"/>
+                                        <rect key="frame" x="346" y="0.0" width="148" height="50"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                         <state key="normal" title="Ride">
@@ -741,8 +756,10 @@
                     <connections>
                         <outlet property="accessTest" destination="sNz-xH-kqh" id="qXU-cs-G43"/>
                         <outlet property="accessTestString" destination="fxq-e9-BQ5" id="AiC-uh-LBw"/>
+                        <outlet property="birthDayLabel" destination="hDz-bW-2cI" id="kjt-CA-SMK"/>
                         <outlet property="canRideLabel" destination="FWx-Lu-UQ3" id="x7c-vd-r09"/>
                         <outlet property="companyNameLabel" destination="HbF-vM-rZz" id="y97-TU-1vN"/>
+                        <outlet property="dateOfVisitLabel" destination="k00-l3-Mwt" id="fCJ-s8-SjS"/>
                         <outlet property="foodDiscountLabel" destination="ztf-no-84Y" id="Agf-MZ-alM"/>
                         <outlet property="merchDisountLabel" destination="l3n-3P-Oka" id="keR-ZC-Wbb"/>
                         <outlet property="nameLabel" destination="tau-w8-MgI" id="CQM-sT-dXa"/>
