@@ -50,19 +50,18 @@ class Entrant: EntrantProfile {
     }
     
     ///Check if entrant has access to given area. Returns console prints but in Part II, return boolen value
-    func swipeAreaAccess(area: AccessAreas)-> Void{
+    func swipeAreaAccess(area: AccessAreas)-> Bool{
         
         checkIfBirthday()
         //Check if swiped area is in accessAreas
         for ownArea in accessAreas {
             if ownArea == area {
                 print("Access granted")
-                //return true
-                return
+                return true
             }
         }
         print("Access denied")
-        //return false
+        return false
     }
     
     /// Swipecheck for rideaccess.

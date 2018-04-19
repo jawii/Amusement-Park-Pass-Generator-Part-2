@@ -23,10 +23,8 @@ class PassGeneratorViewController: UIViewController {
     @IBOutlet weak var foodDiscountLabel: UILabel!
     @IBOutlet weak var merchDisountLabel: UILabel!
     
+    @IBOutlet weak var accessTest: UIView!
     
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,6 +85,60 @@ class PassGeneratorViewController: UIViewController {
         let discountValues = entrant.swipeDiscounts()
         foodDiscountLabel.text = "\(discountValues.food) % food discount"
         merchDisountLabel.text = "\(discountValues.merchandice) % merchandice discount"
+    }
+    
+    @IBAction func testAccess(_ sender: UIButton) {
+        
+        var accessArea: AccessAreas?
+        var access: RideAccess?
+        
+        switch sender.tag {
+        case 0: accessArea = .amusement
+        case 1: accessArea = .kitchen
+        case 2: accessArea = .rideControl
+        case 3: accessArea = .maintenance
+        case 4: accessArea = .office
+        case 5: access = .canPassLines
+        case 6: access = .ride
+        default: print("no tags found")
+        }
+        
+        enum SwipeResult {
+            case accessGranted
+            case accessDenied
+            case wait5seconds
+        }
+        var resultForSwipe: SwipeResult
+        
+        if let access = access{
+            if entrant!.swipeCheck(accessFor: access) {
+                resultForSwipe = .accessGranted
+            } else {
+                resultForSwipe = .accessDenied
+            }
+        }
+        
+        
+        /*
+        
+        if let access = access {
+            result = entrant!.swipeCheck(accessFor: access)
+        }
+        if let accessArea = accessArea {
+            result = entrant!.swipeAreaAccess(area: accessArea)
+        } else {
+            result = false
+        }
+        
+        if result {
+            accessTest.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        } else {
+            accessTest.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        }
+ 
+        */
+        
+        
     }
     
     
