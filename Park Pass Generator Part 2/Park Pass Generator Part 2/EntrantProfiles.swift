@@ -41,6 +41,12 @@ struct EntrantInformation {
     let companyName: String?
 }
 
+enum SwipeResult {
+    case accessGranted
+    case accessDenied
+    case wait5seconds
+}
+
 //Used for labeling the texts and getting the right entrantype
 //Also pass - objects has this type
 enum EntrantType: String {

@@ -36,3 +36,15 @@ extension UIApplication {
         return controller
     }
 }
+
+/// Adds delay
+func delayOnMainThread(seconds: Double, action:(() -> ())!) {
+    
+    let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64( seconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+        action()
+    })
+    
+    let queue = DispatchQueue(label: "com.test.myqueue")
+    queue.async {}
+}

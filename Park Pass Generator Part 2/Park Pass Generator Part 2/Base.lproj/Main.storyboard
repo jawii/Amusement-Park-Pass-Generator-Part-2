@@ -652,15 +652,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNz-xH-kqh">
                                 <rect key="frame" x="250" y="735" width="268" height="147"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Access Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxq-e9-BQ5">
-                                        <rect key="frame" x="81" y="63" width="107" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.58105844259999995" green="0.12855249639999999" blue="0.57453137639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fxq-e9-BQ5">
+                                        <rect key="frame" x="0.0" y="65" width="268" height="18"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fxq-e9-BQ5" firstAttribute="centerX" secondItem="sNz-xH-kqh" secondAttribute="centerX" id="ISL-U1-a5Z"/>
+                                    <constraint firstItem="fxq-e9-BQ5" firstAttribute="width" secondItem="sNz-xH-kqh" secondAttribute="width" id="gSi-cG-VzQ"/>
+                                    <constraint firstItem="fxq-e9-BQ5" firstAttribute="centerY" secondItem="sNz-xH-kqh" secondAttribute="centerY" id="qZe-Y9-d2N"/>
+                                </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="BaR-UW-f4c">
                                 <rect key="frame" x="137.5" y="632" width="493" height="50"/>
@@ -736,6 +740,7 @@
                     </view>
                     <connections>
                         <outlet property="accessTest" destination="sNz-xH-kqh" id="qXU-cs-G43"/>
+                        <outlet property="accessTestString" destination="fxq-e9-BQ5" id="AiC-uh-LBw"/>
                         <outlet property="canRideLabel" destination="FWx-Lu-UQ3" id="x7c-vd-r09"/>
                         <outlet property="companyNameLabel" destination="HbF-vM-rZz" id="y97-TU-1vN"/>
                         <outlet property="foodDiscountLabel" destination="ztf-no-84Y" id="Agf-MZ-alM"/>

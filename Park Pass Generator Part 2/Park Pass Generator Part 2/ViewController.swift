@@ -53,6 +53,15 @@ class ViewController: UIViewController {
             label.isEnabled = false
             label.backgroundColor = UIColor.lightGray
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    @objc func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y = -120 // Move view 150 points upward
+    }
+    
+    @objc func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0 // Move view to original position
     }
     
     
@@ -264,19 +273,6 @@ class ViewController: UIViewController {
             companyNameTextField.backgroundColor = UIColor.lightGray
             companyNameTextField.isEnabled = false
         }
-    }
-    
-    
-    /// Adds delay
-    func delayOnMainThread(seconds: Double, action:(() -> ())!) {
-        
-        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64( seconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-            action()
-        })
-        
-        let queue = DispatchQueue(label: "com.test.myqueue")
-        queue.async {}
     }
     
     /// Clear textFields

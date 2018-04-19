@@ -16,16 +16,20 @@ class Entrant: EntrantProfile {
     var rideAccess: [RideAccess] = []
     var discounts: [Discounts] = []
     var entrantInformation: EntrantInformation
-    var lastTimeswiped: Date
+    var lastTimeswiped = Date().addingTimeInterval(-5) {
+        didSet {
+//            print("Time now: \(Date())")
+//            print("DidSet: \(self.lastTimeswiped)")
+//
+//            print(Date().addingTimeInterval(-5))
+//            print(Date())
+        }
+    }
     var entrantType: EntrantType?
     
     init?(entrantInformation: EntrantInformation) throws{
         self.entrantInformation = entrantInformation
         self.entrantType = nil
-        //creat dummy value for date
-        let dateComponents = DateComponents(year: 2018, month: 1, day: 1)
-        let calendar = Calendar.current
-        self.lastTimeswiped = calendar.date(from: dateComponents)!
     }
     
     ///Check if the entrant has birthday. If yes, print text
@@ -50,50 +54,53 @@ class Entrant: EntrantProfile {
     }
     
     ///Check if entrant has access to given area. Returns console prints but in Part II, return boolen value
-    func swipeAreaAccess(area: AccessAreas)-> Bool{
+    func swipeAreaAccess(area: AccessAreas)-> SwipeResult{
         
         checkIfBirthday()
         //Check if swiped area is in accessAreas
         for ownArea in accessAreas {
             if ownArea == area {
-                print("Access granted")
-                return true
+                //print("Access granted")
+                return .accessGranted
             }
         }
-        print("Access denied")
-        return false
+        //print("Access denied")
+        return .accessDenied
     }
     
     /// Swipecheck for rideaccess.
-    func swipeCheck(accessFor: RideAccess) -> Bool{
+    func swipeCheck(accessFor: RideAccess) -> SwipeResult{
+        
         
         //check if 5 seconds is passed since last swipe
         let timeNow = Date()
-        let interval = timeNow.timeIntervalSince(lastTimeswiped)
-        if interval < 5 {
-            print("Please wait 5 seconds to swipe again")
-            return false
-        }
-        //set new swipe time
-        lastTimeswiped = timeNow
         
+        let interval = timeNow.timeIntervalSince(lastTimeswiped)
+        
+        //print("Last time swiped: \(lastTimeswiped) \nTime now: \(timeNow) \nInterval: \(interval)")
+        if interval < 5 {
+            return .wait5seconds
+        }
+
+        lastTimeswiped = timeNow
+
         checkIfBirthday()
         
         for access in rideAccess {
             if access == accessFor {
-                print("Access granted")
-                return true
+                //print("Access granted")
+                return .accessGranted
             }
         }
-        print("Access denied")
-        return false
+        //print("Access denied")
+        return .accessDenied
     }
     
     ///Swipe for Discount values. Prints them on console.
     func swipeDiscounts() -> (food: Int, merchandice: Int){
         
         checkIfBirthday()
-        lastTimeswiped = Date()
+        //lastTimeswiped = Date()
         
         var foodValue: Int = 0
         var merchValue: Int = 0
@@ -101,17 +108,17 @@ class Entrant: EntrantProfile {
         for discount in discounts{
             switch discount {
             case .food(let value):
-                print("Food discount \(value)%. ")
+                //print("Food discount \(value)%. ")
                 foodValue = value
                 
             case .merchandice(let value):
-                print("Merchandice discount \(value)%")
+                //print("Merchandice discount \(value)%")
                 merchValue = value
             }
         }
         
         if(discounts.isEmpty) {
-            print("No discounts")
+            //print("No discounts")
         }
         
         return (food: foodValue, merchandice: merchValue)

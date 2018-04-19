@@ -24,6 +24,7 @@ class PassGeneratorViewController: UIViewController {
     @IBOutlet weak var merchDisountLabel: UILabel!
     
     @IBOutlet weak var accessTest: UIView!
+    @IBOutlet weak var accessTestString: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,7 @@ class PassGeneratorViewController: UIViewController {
         if let lastName = entrant.entrantInformation.lastName {
             nameString += lastName
         }
-        if nameString == "" {
+        if nameString == " " {
             nameLabel.isHidden = true
         } else {
             nameLabel.text = nameString
@@ -74,12 +75,15 @@ class PassGeneratorViewController: UIViewController {
         }
         
         // Make Ride
+        /*
         let canRide = entrant.swipeCheck(accessFor: .ride)
         if canRide {
             canRideLabel.text = "Unlimited rides"
         } else {
             canRideLabel.text = "No ride access"
         }
+        */
+        canRideLabel.isHidden = true
         
         //Discounts
         let discountValues = entrant.swipeDiscounts()
@@ -103,42 +107,40 @@ class PassGeneratorViewController: UIViewController {
         default: print("no tags found")
         }
         
-        enum SwipeResult {
-            case accessGranted
-            case accessDenied
-            case wait5seconds
-        }
-        var resultForSwipe: SwipeResult
+
+        var resultForSwipe: SwipeResult = SwipeResult.accessDenied
         
         if let access = access{
-            if entrant!.swipeCheck(accessFor: access) {
-                resultForSwipe = .accessGranted
-            } else {
-                resultForSwipe = .accessDenied
-            }
-        }
-        
-        
-        /*
-        
-        if let access = access {
-            result = entrant!.swipeCheck(accessFor: access)
+            resultForSwipe = entrant!.swipeCheck(accessFor: access)
         }
         if let accessArea = accessArea {
-            result = entrant!.swipeAreaAccess(area: accessArea)
-        } else {
-            result = false
+            resultForSwipe = entrant!.swipeAreaAccess(area: accessArea)
         }
         
-        if result {
-            accessTest.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-        } else {
-            accessTest.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        var color: UIColor
+        var accessText: String
+        switch resultForSwipe {
+        case .accessGranted:
+            color = #colorLiteral(red: 0, green: 0.895901978, blue: 0, alpha: 1)
+            accessText = "Access Granted"
+        case .accessDenied:
+            color = #colorLiteral(red: 0.9639720321, green: 0, blue: 0, alpha: 1)
+            accessText = "Access Denied"
+        case .wait5seconds:
+            color = #colorLiteral(red: 0.9010917544, green: 0.7810741067, blue: 0, alpha: 1)
+            accessText = "Please wait 5 seconds to swipe again"
         }
- 
-        */
+        accessTestString.text = accessText
+
+        UIView.animate(withDuration: 0.5, animations: {
+            self.accessTest.backgroundColor = color
+        }, completion: nil)
         
-        
+        delayOnMainThread(seconds: 3, action: {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.accessTest.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            }, completion: nil)
+        })
     }
     
     
