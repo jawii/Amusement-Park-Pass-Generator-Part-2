@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 class Guest:Entrant, GuestProfile{
-    var entrantType = EntrantType.guestClassic
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
         self.accessAreas = [.amusement]
         self.rideAccess = [.ride]
+        self.entrantType = EntrantType.guestClassic
     }
     
 }

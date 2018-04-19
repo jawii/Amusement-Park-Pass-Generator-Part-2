@@ -24,8 +24,8 @@ enum RideAccess: String{
 }
 
 enum Discounts {
-    case food(Double)
-    case merchandice(Double)
+    case food(Int)
+    case merchandice(Int)
 }
 
 struct EntrantInformation {
@@ -45,17 +45,17 @@ struct EntrantInformation {
 //Also pass - objects has this type
 enum EntrantType: String {
     //Guests
-    case guestClassic = "Adult"
-    case guestVIP = "VIP"
-    case guestFreeChild = "Child"
-    case guestSeasonPass = "Season Pass"
+    case guestClassic = "Adult Guest"
+    case guestVIP = "VIP Guest"
+    case guestFreeChild = "Child Guest"
+    case guestSeasonPass = "Season Pass Guest"
     case seniorGuest = "Senior Guest"
     //Hourly Employees
     case Employee
     case employeeContract = "Contract Employee"
-    case employeeFoodService = "Food Services"
-    case employeeRideService = "Ride Services"
-    case employeeMaintenance = "Maintenance"
+    case employeeFoodService = "Food Services Employee"
+    case employeeRideService = "Ride Services Employee"
+    case employeeMaintenance = "Maintenance Employee"
     //other
     case managerShift = "Shift Manager"
     case managerGeneral = "General Manager"
@@ -70,11 +70,12 @@ protocol EntrantProfile {
     var rideAccess: [RideAccess] { get }
     var entrantInformation: EntrantInformation { get }
     var discounts: [Discounts] { get }
+    var entrantType: EntrantType? { get }
 }
 
 //Protocols for Guests. Leave VIP and Child protocol empty for now...
 protocol GuestProfile: EntrantProfile {
-    var entrantType: EntrantType { get }
+    
 }
 protocol VIPGuestProfile: GuestProfile {
 }
@@ -83,7 +84,7 @@ protocol FreeChildGuestProfile: GuestProfile {
 
 //Protocols for Employees
 protocol EmployeeProfile: EntrantProfile {
-    var entrantType: EntrantType { get }
+    
 }
 protocol EmployeeHourlyProfile: EmployeeProfile{
     

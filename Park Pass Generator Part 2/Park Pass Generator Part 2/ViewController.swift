@@ -54,6 +54,15 @@ class ViewController: UIViewController {
             label.backgroundColor = UIColor.lightGray
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "passGenerator" {
+            let controller = segue.destination as! PassGeneratorViewController
+            controller.entrant = sender as? Entrant
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -126,10 +135,10 @@ class ViewController: UIViewController {
         } else if currentEntrant == .vendor {
             entrantObject = try! Vendor(entrantInformation: entrantInformation)
         } else {
-            print("TYPO")
+            return
         }
         
-        print(entrantObject)
+        self.performSegue(withIdentifier: "passGenerator", sender: entrantObject)
     }
     
     /// Populate data button
@@ -241,6 +250,7 @@ class ViewController: UIViewController {
         
         
         // Get the current entranttype. Wrap by force because its 101% sure that the titlelabel text has entranttypes raw values
+        // If its a crash, it's a bug :)
         let entrantType : EntrantType = EntrantType(rawValue: (button.titleLabel?.text)!)!
         currentEntrant = entrantType
         

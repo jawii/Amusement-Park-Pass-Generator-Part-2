@@ -48,34 +48,33 @@ class Employee: Entrant {
 
 
 class EmployeeHourlyFoodServices: Employee, EmployeeHourlyProfile {
-    var entrantType = EntrantType.employeeFoodService
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
         self.accessAreas = [.amusement, .kitchen]
+        self.entrantType = EntrantType.employeeFoodService
     }
 }
 
 class EmployeeHourlyRideServices: Employee, EmployeeHourlyProfile {
-    var entrantType = EntrantType.employeeRideService
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
         self.accessAreas = [.amusement, .rideControl]
+        self.entrantType = EntrantType.employeeRideService
     }
 }
 
 class EmployeeHourlyMaintenance: Employee, EmployeeHourlyProfile {
-    var entrantType = EntrantType.employeeMaintenance
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
         self.accessAreas = [.amusement, .kitchen, .rideControl, .maintenance]
+        self.entrantType = EntrantType.employeeMaintenance
     }
 }
 
 class EmployeeContract: Employee, EmployeeHourlyProfile {
-    var entrantType = EntrantType.employeeContract
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
@@ -101,38 +100,42 @@ class EmployeeContract: Employee, EmployeeHourlyProfile {
         }
         self.discounts = [.food(0), .merchandice(0)]
         self.rideAccess = []
+        self.entrantType = EntrantType.employeeContract
         
     }
 }
 
 ///Manager is like an Employee
 class ManagerGeneral: Employee, ManagerProfile {
-    var entrantType = EntrantType.managerGeneral
+    
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
         self.accessAreas = [.amusement, .kitchen, .office, .rideControl, .maintenance]
         self.discounts = [.food(25), .merchandice(25)]
+        self.entrantType = EntrantType.managerGeneral
     }
 }
 
 class ManagerShift: Employee, ManagerProfile {
-    var entrantType = EntrantType.managerShift
+    
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
         self.accessAreas = [.amusement, .kitchen, .office, .rideControl, .maintenance]
         self.discounts = [.food(25), .merchandice(25)]
+        self.entrantType = EntrantType.managerShift
     }
 }
 class ManagerSenior: Employee, ManagerProfile {
-    var entrantType = EntrantType.managerSenior
+    
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
         
         self.accessAreas = [.amusement, .kitchen, .office, .rideControl, .maintenance]
         self.discounts = [.food(25), .merchandice(25)]
+        self.entrantType = EntrantType.managerSenior
     }
 }
 
@@ -172,6 +175,7 @@ class Vendor: Entrant {
         
         self.discounts = [.food(0), .merchandice(0)]
         self.rideAccess = []
+        self.entrantType = EntrantType.vendor
     }
 }
 

@@ -17,10 +17,11 @@ class Entrant: EntrantProfile {
     var discounts: [Discounts] = []
     var entrantInformation: EntrantInformation
     var lastTimeswiped: Date
+    var entrantType: EntrantType?
     
     init?(entrantInformation: EntrantInformation) throws{
         self.entrantInformation = entrantInformation
-        
+        self.entrantType = nil
         //creat dummy value for date
         let dateComponents = DateComponents(year: 2018, month: 1, day: 1)
         let calendar = Calendar.current
@@ -65,14 +66,14 @@ class Entrant: EntrantProfile {
     }
     
     /// Swipecheck for rideaccess.
-    func swipeCheck(accessFor: RideAccess) -> Void{
+    func swipeCheck(accessFor: RideAccess) -> Bool{
         
         //check if 5 seconds is passed since last swipe
         let timeNow = Date()
         let interval = timeNow.timeIntervalSince(lastTimeswiped)
         if interval < 5 {
             print("Please wait 5 seconds to swipe again")
-            return
+            return false
         }
         //set new swipe time
         lastTimeswiped = timeNow
@@ -82,33 +83,40 @@ class Entrant: EntrantProfile {
         for access in rideAccess {
             if access == accessFor {
                 print("Access granted")
-                //return true
-                return
+                return true
             }
         }
         print("Access denied")
-        //return false
+        return false
     }
     
     ///Swipe for Discount values. Prints them on console.
-    func swipeDiscounts(){
+    func swipeDiscounts() -> (food: Int, merchandice: Int){
         
         checkIfBirthday()
         lastTimeswiped = Date()
+        
+        var foodValue: Int = 0
+        var merchValue: Int = 0
         
         for discount in discounts{
             switch discount {
             case .food(let value):
                 print("Food discount \(value)%. ")
+                foodValue = value
                 
             case .merchandice(let value):
                 print("Merchandice discount \(value)%")
+                merchValue = value
             }
         }
         
         if(discounts.isEmpty) {
             print("No discounts")
         }
+        
+        return (food: foodValue, merchandice: merchValue)
+        
     }
     
     func throwAlert(with message: String, title: String) {

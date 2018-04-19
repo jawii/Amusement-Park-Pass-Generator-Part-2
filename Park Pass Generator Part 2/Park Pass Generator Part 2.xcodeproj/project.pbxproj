@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		314BC9FA20886F02000ACB50 /* PassGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BC9F920886F02000ACB50 /* PassGeneratorViewController.swift */; };
 		3155C6CF2086FADB00819248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3155C6CE2086FADB00819248 /* AppDelegate.swift */; };
 		3155C6D12086FADB00819248 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3155C6D02086FADB00819248 /* ViewController.swift */; };
 		3155C6D42086FADB00819248 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3155C6D22086FADB00819248 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		314BC9F920886F02000ACB50 /* PassGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassGeneratorViewController.swift; sourceTree = "<group>"; };
 		3155C6CB2086FADB00819248 /* Park Pass Generator Part 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park Pass Generator Part 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3155C6CE2086FADB00819248 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3155C6D02086FADB00819248 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				31C18DD720874F2400B3B54A /* ErrorHandling.swift */,
 				31C18DD920874F3000B3B54A /* EntrantClasses */,
 				31C62B7E20879E3C00C9D47E /* Helpers.swift */,
+				314BC9F920886F02000ACB50 /* PassGeneratorViewController.swift */,
 			);
 			path = "Park Pass Generator Part 2";
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31C18DD220874EB600B3B54A /* EntrantProfiles.swift in Sources */,
+				314BC9FA20886F02000ACB50 /* PassGeneratorViewController.swift in Sources */,
 				31C62B7F20879E3C00C9D47E /* Helpers.swift in Sources */,
 				31C18DD620874EF700B3B54A /* Employees.swift in Sources */,
 				31C62B812087D66D00C9D47E /* PopulatedDatas.swift in Sources */,
