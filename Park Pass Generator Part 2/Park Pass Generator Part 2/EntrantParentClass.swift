@@ -43,7 +43,6 @@ class Entrant: EntrantProfile {
             let birthday = returnDayAndMonth(from: age)
             
             if dayAndMonthNow == birthday {
-                //print("Happy BirthDay!!")
                 return true
             }
         }
@@ -56,69 +55,50 @@ class Entrant: EntrantProfile {
         return (ageComponents.day!, ageComponents.month!)
     }
     
-    ///Check if entrant has access to given area. Returns console prints but in Part II, return boolen value
+    ///Check if entrant has access to given area.
     func swipeAreaAccess(area: AccessAreas)-> SwipeResult{
         //Check if swiped area is in accessAreas
         for ownArea in accessAreas {
             if ownArea == area {
-                //print("Access granted")
                 return .accessGranted
             }
         }
-        //print("Access denied")
         return .accessDenied
     }
     
     /// Swipecheck for rideaccess.
     func swipeCheck(accessFor: RideAccess) -> SwipeResult{
         
-        
-        //check if 5 seconds is passed since last swipe
+        // Check if 5 seconds is passed since last swipe
         let timeNow = Date()
-        
         let interval = timeNow.timeIntervalSince(lastTimeswiped)
-        
-        //print("Last time swiped: \(lastTimeswiped) \nTime now: \(timeNow) \nInterval: \(interval)")
         if interval < 5 {
             return .wait5seconds
         }
-
         lastTimeswiped = timeNow
 
         for access in rideAccess {
             if access == accessFor {
-                //print("Access granted")
                 return .accessGranted
             }
         }
-        //print("Access denied")
         return .accessDenied
     }
     
     ///Swipe for Discount values. Prints them on console.
     func swipeDiscounts() -> (food: Int, merchandice: Int){
 
-        //lastTimeswiped = Date()
-        
         var foodValue: Int = 0
         var merchValue: Int = 0
         
         for discount in discounts{
             switch discount {
             case .food(let value):
-                //print("Food discount \(value)%. ")
                 foodValue = value
-                
             case .merchandice(let value):
-                //print("Merchandice discount \(value)%")
                 merchValue = value
             }
         }
-        
-        if(discounts.isEmpty) {
-            //print("No discounts")
-        }
-        
         return (food: foodValue, merchandice: merchValue)
         
     }

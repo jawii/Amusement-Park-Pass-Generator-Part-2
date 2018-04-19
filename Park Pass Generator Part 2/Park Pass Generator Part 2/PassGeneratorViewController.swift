@@ -112,9 +112,6 @@ class PassGeneratorViewController: UIViewController {
     
     @IBAction func testAccess(_ sender: UIButton) {
         
-        
-        view.layer.removeAllAnimations()
-        
         var accessArea: AccessAreas?
         var access: RideAccess?
         
@@ -126,7 +123,7 @@ class PassGeneratorViewController: UIViewController {
         case 4: accessArea = .office
         case 5: access = .canPassLines
         case 6: access = .ride
-        default: print("no tags found")
+        default: print("no tags found"); return
         }
         
 
@@ -156,19 +153,17 @@ class PassGeneratorViewController: UIViewController {
         }
         accessTestString.text = accessText
 
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.accessTest.backgroundColor = color
         }, completion: nil)
         
-        delayOnMainThread(seconds: 0.5, action: {
-            UIView.animate(withDuration: 0.5, animations: {
+        delayOnMainThread(seconds: 0.25, action: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.accessTest.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             }, completion: nil)
         })
     }
     
-    
-
     @IBAction func createNewPas(_ sender: Any) {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)

@@ -21,6 +21,7 @@ import UIKit
 //#8 state
 //#9 zipcode
 
+// Populates Datas for Entrant Info
 func POPULATEDATAS(with entrantType: EntrantType, labels: [UITextField]){
     //print(entrantType)
     //print(labels)
@@ -49,24 +50,4 @@ func POPULATEDATAS(with entrantType: EntrantType, labels: [UITextField]){
         }
     }
 }
-
-//enum EntrantType: String {
-//    //Guests
-//    case guestClassic = "Adult"
-//    case guestVIP = "VIP"
-//    case guestFreeChild = "Child"
-//    case guestSeasonPass = "Season Pass"
-//    case seniorGuest = "Senior Guest"
-//    //Hourly Employees
-//    case Employee
-//    case employeeContract = "Contract Employee"
-//    case employeeFoodService = "Food Services"
-//    case employeeRideService = "Ride Services"
-//    case employeeMaintenance = "Maintenance"
-//    //other
-//    case managerShift = "Shift Manager"
-//    case managerGeneral = "General Manager"
-//    case managerSenior = "Senior Manager"
-//    case vendor = "Vendor"
-//}
 

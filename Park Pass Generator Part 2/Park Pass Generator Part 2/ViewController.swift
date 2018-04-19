@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     // Entrantypes (6 buttons)
     @IBOutlet var entrantTypes: [UIButton]!
     
-    
     // Info text fields
     @IBOutlet weak var dateOfBirthTextField: UITextField!
     @IBOutlet weak var ssnTextField: UITextField!
@@ -44,8 +43,6 @@ class ViewController: UIViewController {
         //hide all entrant buttons
         for btn in entrantTypes {
             btn.isHidden = true
-            //setup buttons
-            
         }
         
         //disable all textfields
@@ -53,6 +50,7 @@ class ViewController: UIViewController {
             label.isEnabled = false
             label.backgroundColor = UIColor.lightGray
         }
+        //Notifications for keyboard showup
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -72,12 +70,6 @@ class ViewController: UIViewController {
             controller.entrant = sender as? Entrant
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     /// Generate Pass Button
     @IBAction func generatePass(_ sender: UIButton) {
@@ -85,7 +77,6 @@ class ViewController: UIViewController {
         if currentEntrant == nil {
             return
         }
-        
         
         // Try to form date from dateOfBirthTextField.
         var finalBirthDate: Date? = nil
@@ -112,11 +103,9 @@ class ViewController: UIViewController {
         
         let entrantInformation = EntrantInformation(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetAddressTextField.text, city: cityNameTextField.text, state: stateNameTextField.text, zipCode: zipCodeTextField.text, dateOfBirth: finalBirthDate, socialSecurityNumber: ssnTextField.text, projectNumber: projectTextField.text, companyName: companyNameTextField.text)
         
-        
         //create entrant
         var entrantObject: Entrant?
-        //let currentEntrantType = currentEntrant as EntrantType!
-        
+
         if currentEntrant == .guestFreeChild {
             entrantObject = try! GuestFreeChild(entrantInformation: entrantInformation)
         } else if currentEntrant == .guestClassic  {
@@ -158,7 +147,7 @@ class ViewController: UIViewController {
         POPULATEDATAS(with: currentEntrant!, labels: entranInfoLabelTexts)
     }
     
-    /// Set ups the entrant buttons
+    /// Set up the entrant buttons
     @IBAction func mainEntrantSelect(_ sender: UIButton){
         
         currentEntrant = nil

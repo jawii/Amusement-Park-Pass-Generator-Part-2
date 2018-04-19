@@ -16,7 +16,6 @@ class Employee: Entrant {
         try super.init(entrantInformation: entrantInformation)
         
         // Check that there is no empty strings for information
-        // No need to check the nil because textfield returns always atleast empty string.
         do {
             if entrantInformation.firstName == "" {
                 throw EntrantCheckError.invalidFirstName
@@ -36,8 +35,6 @@ class Employee: Entrant {
                 throw EntrantCheckError.invalidStreetAddress
             }
         } catch let error as EntrantCheckError {
-            //print("Error for creating pass for Employee:")
-            //print(error.rawValue)
             throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
@@ -84,8 +81,6 @@ class EmployeeContract: Employee, EmployeeHourlyProfile {
                 throw EntrantCheckError.invalidProjectNumber
             }
         } catch let error as EntrantCheckError {
-            //print("Error for creating pass for Employee:")
-            //print(error.rawValue)
             throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
@@ -108,7 +103,6 @@ class EmployeeContract: Employee, EmployeeHourlyProfile {
 ///Manager is like an Employee
 class ManagerGeneral: Employee, ManagerProfile {
     
-    
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
         self.accessAreas = [.amusement, .kitchen, .office, .rideControl, .maintenance]
@@ -119,7 +113,6 @@ class ManagerGeneral: Employee, ManagerProfile {
 
 class ManagerShift: Employee, ManagerProfile {
     
-    
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
         self.accessAreas = [.amusement, .kitchen, .office, .rideControl, .maintenance]
@@ -127,8 +120,8 @@ class ManagerShift: Employee, ManagerProfile {
         self.entrantType = EntrantType.managerShift
     }
 }
+
 class ManagerSenior: Employee, ManagerProfile {
-    
     
     override init?(entrantInformation: EntrantInformation) throws{
         try super.init(entrantInformation: entrantInformation)
@@ -145,11 +138,9 @@ class Vendor: Entrant {
     
     override init?(entrantInformation: EntrantInformation) throws {
 
-        
         try super.init(entrantInformation: entrantInformation)
         
         // Check that there is no empty strings for information
-        // No need to check the nil because textfield returns always atleast empty string.
         do {
             if entrantInformation.firstName == "" {
                 throw EntrantCheckError.invalidFirstName
@@ -164,7 +155,6 @@ class Vendor: Entrant {
             throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
-        
         
         switch entrantInformation.companyName {
         case "Acme": self.accessAreas = [.kitchen]

@@ -17,7 +17,6 @@ class Guest:Entrant, GuestProfile{
         self.rideAccess = [.ride]
         self.entrantType = EntrantType.guestClassic
     }
-    
 }
 
 class GuestVIP: Guest, VIPGuestProfile{
@@ -37,7 +36,6 @@ class GuestFreeChild: Guest, FreeChildGuestProfile{
         entrantType = EntrantType.guestFreeChild
         
         guard entrantInformation.dateOfBirth != nil else {
-            //print(EntrantCheckError.invalidAge.rawValue)
             throwAlert(with: EntrantCheckError.invalidAge.rawValue, title: "Invalid data")
             return nil
         }
@@ -46,7 +44,6 @@ class GuestFreeChild: Guest, FreeChildGuestProfile{
         do {
             try checkcAgeIsOverFice(with: entrantInformation.dateOfBirth!)
         } catch let error as EntrantCheckError{
-            print(error.rawValue)
             throwAlert(with: error.rawValue, title: "Invalid age")
             return nil
         }
@@ -61,7 +58,6 @@ class GuestFreeChild: Guest, FreeChildGuestProfile{
         let calendar = Calendar.current
         var age = calendar.dateComponents([.year], from: birthday, to: timeNow)
         
-        //print("Child Age is \(age.year!).")
         if age.year! > 5 {
             throw EntrantCheckError.ageTooHigh
         }
@@ -88,8 +84,6 @@ class GuestSeasonPass: Guest {
                 throw EntrantCheckError.invalidAge
             }
         } catch let error as EntrantCheckError {
-//          print("Error for creating pass for Season Guest:")
-//          print(error.rawValue)
             throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
@@ -115,12 +109,9 @@ class GuestSenior: Guest {
                 throw EntrantCheckError.invalidAge
             }
         } catch let error as EntrantCheckError {
-            //print("Error for creating pass for Season Guest:")
-            //print(error.rawValue)
             throwAlert(with: error.rawValue, title: "Invalid Data")
             return nil
         }
-        
         
         self.rideAccess = [.canPassLines, .ride]
         self.discounts = [.food(10), .merchandice(10)]

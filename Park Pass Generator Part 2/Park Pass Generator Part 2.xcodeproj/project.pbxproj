@@ -78,6 +78,7 @@
 			children = (
 				3155C6CE2086FADB00819248 /* AppDelegate.swift */,
 				3155C6D02086FADB00819248 /* ViewController.swift */,
+				314BC9F920886F02000ACB50 /* PassGeneratorViewController.swift */,
 				3155C6D22086FADB00819248 /* Main.storyboard */,
 				3155C6D52086FADB00819248 /* Assets.xcassets */,
 				3155C6D72086FADB00819248 /* LaunchScreen.storyboard */,
@@ -87,7 +88,6 @@
 				314BCA022088D7D6000ACB50 /* AccessGranted.wav */,
 				31C18DD920874F3000B3B54A /* EntrantClasses */,
 				31C62B7E20879E3C00C9D47E /* Helpers.swift */,
-				314BC9F920886F02000ACB50 /* PassGeneratorViewController.swift */,
 				314BC9FF2088D75E000ACB50 /* SoundProvider.swift */,
 			);
 			path = "Park Pass Generator Part 2";

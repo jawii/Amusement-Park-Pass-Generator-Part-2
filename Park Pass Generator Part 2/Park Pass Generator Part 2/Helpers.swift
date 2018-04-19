@@ -49,7 +49,7 @@ func delayOnMainThread(seconds: Double, action:(() -> ())!) {
     queue.async {}
 }
 
-
+/// Converts Date - object to string
 extension Date
 {
     func toString( dateFormat format  : String ) -> String
